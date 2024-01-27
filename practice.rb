@@ -27,3 +27,27 @@ blockchain = [
 # Anthony's KelloggCoin balance is 2650
 
 # 👇👇👇 Your code HERE 👇👇👇
+
+user_list = []
+
+for user in blockchain
+  if user["from_user"] != nil
+    user_list << user["from_user"]
+  end
+end
+
+final_user_list = user_list.uniq
+
+balance = Hash.new(0)
+
+for final_user in final_user_list
+  for user in blockchain
+    if user["from_user"] == final_user
+      balance[final_user] -= user["amount"]
+    end
+    if user["to_user"] == final_user
+      balance[final_user] += user["amount"]
+    end
+  end
+  puts "#{final_user} : #{balance[final_user]}"  
+end
